@@ -1,5 +1,11 @@
 sudo: required
 dist: trusty
+language: python
+virtualenv:
+ system_site_package: false
+
+install:
+  - pip install pipenv pew
 
 script:
   - bash -xve ./test/travis_ros_install.bash
