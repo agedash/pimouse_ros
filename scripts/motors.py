@@ -13,7 +13,7 @@ class Motor():
         rospy.on_shutdown(self.set_power)
         self.sub_raw = rospy.Subscriber('motor_raw', MotorFreqs, self.callback_raw_freq)
         self.sub_cmd_vel = rospy.Subscriber('cmd_vel', Twist, self.callback_cmd_vel)
- 	self.srv_tm = rospy.Service('times_motion', TimedMotion, self.callback_tm)
+ 	self.srv_tm = rospy.Service('timed_motion', TimedMotion, self.callback_tm)
         self.srv_on = rospy.Service('motor_on', Trigger, self.callback_on)            #追加
         self.srv_off = rospy.Service('motor_off', Trigger, self.callback_off)         #追加
         self.last_time = rospy.Time.now()
@@ -63,10 +63,9 @@ class Motor():
 	dev = "/dev/rtmotor0"
 	try:
 		with open(dev,'w') as f:
-		f.write("%d %d %d\n" %
-			(messae.left_hz,message.riht_hz,message.duration_ms))
+		f.write("%d %d %d\n" % (messae.left_hz,message.right_hz,message.duration_ms))
 	except:
-		rospy.logerr("cannotwrite to " + dev)
+		rospy.logerr("cannot write to " + dev)
 		return False
 
 	return True
