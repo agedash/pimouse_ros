@@ -5,6 +5,8 @@ import rosnode
 import time
 from std_msgs.msg import UInt16
 from pimouse_ros.msg import MusicAction, MusicResult, MusicFeedback, MusicGoal #1行追加
+#コメント追記20180831
+#from std_msgs.msg import UInt16
 
 class BuzzerTest(unittest.TestCase):
     def setUp(self):                                #setUpメソッドを追加する
@@ -56,6 +58,10 @@ if __name__ == '__main__':
     rospy.init_node('travis_test_buzzer')
     rostest.rosrun('pimouse_ros','travis_test_buzzer',BuzzerTest)
 
+<<<<<<< HEAD
 # Copyright 2016 Ryuichi Ueda
 # Released under the BSD License.
 # To make line numbers be identical with the book, this statement is written here. Don't move it to the header.
+=======
+
+>>>>>>> dev
